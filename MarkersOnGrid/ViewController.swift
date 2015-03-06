@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  MarkersOnGrid
-//
-//  Created by Kevin Liddle on 12/5/14.
-//  Copyright (c) 2014 Kevin Liddle. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
