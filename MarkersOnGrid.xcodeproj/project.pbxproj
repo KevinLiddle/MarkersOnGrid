@@ -17,11 +17,14 @@
 		7408C3561A325BDD00C008FF /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7408C3551A325BDD00C008FF /* Board.swift */; };
 		7408C3571A32641E00C008FF /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7408C3551A325BDD00C008FF /* Board.swift */; };
 		742792A21A4127DA00E21618 /* TicTacToeRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B631D1A4003F8005415DB /* TicTacToeRules.swift */; };
+		745C556E1AAB671600AFE5A8 /* TemplateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C556D1AAB671600AFE5A8 /* TemplateController.swift */; };
 		748B631C1A3FF743005415DB /* TicTacToeRulesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B631B1A3FF743005415DB /* TicTacToeRulesTest.swift */; };
 		748B631E1A4003F8005415DB /* TicTacToeRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B631D1A4003F8005415DB /* TicTacToeRules.swift */; };
 		74ABFCEE1A608DD3002CB8C0 /* ASCIIBoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ABFCED1A608DD3002CB8C0 /* ASCIIBoardTest.swift */; };
 		74ABFCF01A608DFD002CB8C0 /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ABFCEF1A608DFD002CB8C0 /* ASCIIBoard.swift */; };
 		74ABFCF11A608DFD002CB8C0 /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ABFCEF1A608DFD002CB8C0 /* ASCIIBoard.swift */; };
+		74C66ECE1AAA502200083C3A /* TemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C66ECD1AAA502200083C3A /* TemplateView.xib */; };
+		74C66ED01AAA50A100083C3A /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C66ECF1AAA50A100083C3A /* TemplateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +50,13 @@
 		7408C3491A325A4E00C008FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7408C34A1A325A4E00C008FF /* BoardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 		7408C3551A325BDD00C008FF /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		745C556D1AAB671600AFE5A8 /* TemplateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateController.swift; sourceTree = "<group>"; };
 		748B631B1A3FF743005415DB /* TicTacToeRulesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeRulesTest.swift; sourceTree = "<group>"; };
 		748B631D1A4003F8005415DB /* TicTacToeRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeRules.swift; sourceTree = "<group>"; };
 		74ABFCED1A608DD3002CB8C0 /* ASCIIBoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoardTest.swift; sourceTree = "<group>"; };
 		74ABFCEF1A608DFD002CB8C0 /* ASCIIBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoard.swift; sourceTree = "<group>"; };
+		74C66ECD1AAA502200083C3A /* TemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateView.xib; sourceTree = "<group>"; };
+		74C66ECF1AAA50A100083C3A /* TemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 		7408C32E1A325A4E00C008FF /* MarkersOnGrid */ = {
 			isa = PBXGroup;
 			children = (
+				74C66ECA1AAA4BFE00083C3A /* layout */,
 				74C66EC61AAA4B3100083C3A /* board */,
 				74C66EC71AAA4B4900083C3A /* ttt */,
 				7408C3311A325A4E00C008FF /* AppDelegate.swift */,
@@ -163,6 +170,16 @@
 			children = (
 			);
 			name = ttt;
+			sourceTree = "<group>";
+		};
+		74C66ECA1AAA4BFE00083C3A /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				74C66ECD1AAA502200083C3A /* TemplateView.xib */,
+				74C66ECF1AAA50A100083C3A /* TemplateView.swift */,
+				745C556D1AAB671600AFE5A8 /* TemplateController.swift */,
+			);
+			name = layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74C66ECE1AAA502200083C3A /* TemplateView.xib in Resources */,
 				7408C33A1A325A4E00C008FF /* Main.storyboard in Resources */,
 				7408C33F1A325A4E00C008FF /* LaunchScreen.xib in Resources */,
 				7408C33C1A325A4E00C008FF /* Images.xcassets in Resources */,
@@ -268,6 +286,8 @@
 				74ABFCF01A608DFD002CB8C0 /* ASCIIBoard.swift in Sources */,
 				7408C3371A325A4E00C008FF /* ViewController.swift in Sources */,
 				7408C3351A325A4E00C008FF /* MarkersOnGrid.xcdatamodeld in Sources */,
+				745C556E1AAB671600AFE5A8 /* TemplateController.swift in Sources */,
+				74C66ED01AAA50A100083C3A /* TemplateView.swift in Sources */,
 				7408C3561A325BDD00C008FF /* Board.swift in Sources */,
 				748B631E1A4003F8005415DB /* TicTacToeRules.swift in Sources */,
 				7408C3321A325A4E00C008FF /* AppDelegate.swift in Sources */,

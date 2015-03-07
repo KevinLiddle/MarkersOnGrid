@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-4U-Al7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-4U-Al7">
                                 <rect key="frame" x="263" y="279" width="75" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="EeD-gC-ldf"/>
@@ -28,7 +28,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YZI-uK-f1Q" kind="showDetail" id="lU9-44-nbb"/>
+                                    <segue destination="YZI-uK-f1Q" kind="popoverPresentation" popoverAnchorView="XOj-4U-Al7" id="VcR-O4-UJq">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -36,6 +38,10 @@
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" none="YES" button="YES"/>
                         </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="XOj-4U-Al7" secondAttribute="centerY" id="CXx-RL-NhF"/>
+                            <constraint firstAttribute="centerX" secondItem="XOj-4U-Al7" secondAttribute="centerX" constant="-0.5" id="MhK-aW-22h"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -52,10 +58,19 @@
             </objects>
             <point key="canvasLocation" x="-470" y="414"/>
         </scene>
-        <!--View Controller-->
+        <!--Template Controller-->
         <scene sceneID="p6I-IR-JoI">
             <objects>
-                <viewController id="YZI-uK-f1Q" sceneMemberID="viewController"/>
+                <viewController id="YZI-uK-f1Q" customClass="TemplateController" customModule="MarkersOnGrid" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I7B-Ec-0bt"/>
+                        <viewControllerLayoutGuide type="bottom" id="o21-xw-LPv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FDM-M0-XKQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </view>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgI-2f-MUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="259" y="570"/>
