@@ -1,9 +1,9 @@
 import Foundation
 
-class TicTacToeRules {
+class TicTacToeRules: Rules {
   var board: Board
 
-  init(board: Board) {
+  required init(board: Board) {
     self.board = board
   }
 

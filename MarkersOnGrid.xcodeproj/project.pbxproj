@@ -12,18 +12,21 @@
 		7408C33A1A325A4E00C008FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7408C3381A325A4E00C008FF /* Main.storyboard */; };
 		7408C33C1A325A4E00C008FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7408C33B1A325A4E00C008FF /* Images.xcassets */; };
 		7408C33F1A325A4E00C008FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7408C33D1A325A4E00C008FF /* LaunchScreen.xib */; };
+		742DBD491AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */; };
+		742DBD4A1AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */; };
+		742DBD4C1AC5F6D8005EB047 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD4B1AC5F6D8005EB047 /* Rules.swift */; };
+		742DBD4D1AC5F6D8005EB047 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD4B1AC5F6D8005EB047 /* Rules.swift */; };
 		749667331ABCBA2D00E69E03 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749667321ABCBA2D00E69E03 /* HomeController.swift */; };
 		74BA07B01AC23A7F00435E4C /* TicTacToeRulesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07AF1AC23A7F00435E4C /* TicTacToeRulesTest.swift */; };
-		74BA07B41AC23A8600435E4C /* ASCIIBoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07B21AC23A8600435E4C /* ASCIIBoardTest.swift */; };
 		74BA07B51AC23A8600435E4C /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07B31AC23A8600435E4C /* BoardTest.swift */; };
 		74BA07C31AC23ADB00435E4C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07C11AC23ADB00435E4C /* Colors.swift */; };
 		74BA07C41AC23ADB00435E4C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07C11AC23ADB00435E4C /* Colors.swift */; };
 		74BA07C91AC23AE200435E4C /* TicTacToeRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07C81AC23AE200435E4C /* TicTacToeRules.swift */; };
 		74BA07CA1AC23AE200435E4C /* TicTacToeRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07C81AC23AE200435E4C /* TicTacToeRules.swift */; };
-		74BA07CE1AC23AE800435E4C /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07CC1AC23AE800435E4C /* ASCIIBoard.swift */; };
-		74BA07CF1AC23AE800435E4C /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07CC1AC23AE800435E4C /* ASCIIBoard.swift */; };
 		74BA07D01AC23AE800435E4C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07CD1AC23AE800435E4C /* Board.swift */; };
 		74BA07D11AC23AE800435E4C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07CD1AC23AE800435E4C /* Board.swift */; };
+		74FE249F1AD76B3700C6C0D9 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE249E1AD76B3700C6C0D9 /* GameController.swift */; };
+		74FE24A81AD795AC00C6C0D9 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FE24A51AD795AC00C6C0D9 /* GridCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,14 +49,16 @@
 		7408C33E1A325A4E00C008FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7408C3441A325A4E00C008FF /* MarkersOnGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarkersOnGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7408C3491A325A4E00C008FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeGame.swift; sourceTree = "<group>"; };
+		742DBD4B1AC5F6D8005EB047 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		749667321ABCBA2D00E69E03 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		74BA07AF1AC23A7F00435E4C /* TicTacToeRulesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeRulesTest.swift; sourceTree = "<group>"; };
-		74BA07B21AC23A8600435E4C /* ASCIIBoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoardTest.swift; sourceTree = "<group>"; };
 		74BA07B31AC23A8600435E4C /* BoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 		74BA07C11AC23ADB00435E4C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		74BA07C81AC23AE200435E4C /* TicTacToeRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeRules.swift; sourceTree = "<group>"; };
-		74BA07CC1AC23AE800435E4C /* ASCIIBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIBoard.swift; sourceTree = "<group>"; };
 		74BA07CD1AC23AE800435E4C /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		74FE249E1AD76B3700C6C0D9 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		74FE24A51AD795AC00C6C0D9 /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,7 @@
 				7408C33D1A325A4E00C008FF /* LaunchScreen.xib */,
 				7408C3331A325A4E00C008FF /* MarkersOnGrid.xcdatamodeld */,
 				7408C32F1A325A4E00C008FF /* Supporting Files */,
+				742DBD4B1AC5F6D8005EB047 /* Rules.swift */,
 			);
 			path = MarkersOnGrid;
 			sourceTree = "<group>";
@@ -146,7 +152,6 @@
 		74BA07B11AC23A8600435E4C /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				74BA07B21AC23A8600435E4C /* ASCIIBoardTest.swift */,
 				74BA07B31AC23A8600435E4C /* BoardTest.swift */,
 			);
 			path = Board;
@@ -163,7 +168,10 @@
 		74BA07C71AC23AE200435E4C /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				74FE24A21AD7956800C6C0D9 /* Cells */,
+				74FE249E1AD76B3700C6C0D9 /* GameController.swift */,
 				74BA07C81AC23AE200435E4C /* TicTacToeRules.swift */,
+				742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -171,10 +179,17 @@
 		74BA07CB1AC23AE800435E4C /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				74BA07CC1AC23AE800435E4C /* ASCIIBoard.swift */,
 				74BA07CD1AC23AE800435E4C /* Board.swift */,
 			);
 			path = Board;
+			sourceTree = "<group>";
+		};
+		74FE24A21AD7956800C6C0D9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				74FE24A51AD795AC00C6C0D9 /* GridCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,11 +294,14 @@
 			files = (
 				749667331ABCBA2D00E69E03 /* HomeController.swift in Sources */,
 				74BA07C91AC23AE200435E4C /* TicTacToeRules.swift in Sources */,
+				742DBD4C1AC5F6D8005EB047 /* Rules.swift in Sources */,
 				74BA07C31AC23ADB00435E4C /* Colors.swift in Sources */,
+				74FE249F1AD76B3700C6C0D9 /* GameController.swift in Sources */,
 				7408C3351A325A4E00C008FF /* MarkersOnGrid.xcdatamodeld in Sources */,
 				7408C3321A325A4E00C008FF /* AppDelegate.swift in Sources */,
 				74BA07D01AC23AE800435E4C /* Board.swift in Sources */,
-				74BA07CE1AC23AE800435E4C /* ASCIIBoard.swift in Sources */,
+				742DBD491AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */,
+				74FE24A81AD795AC00C6C0D9 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,13 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74BA07B41AC23A8600435E4C /* ASCIIBoardTest.swift in Sources */,
 				74BA07CA1AC23AE200435E4C /* TicTacToeRules.swift in Sources */,
+				742DBD4D1AC5F6D8005EB047 /* Rules.swift in Sources */,
 				74BA07C41AC23ADB00435E4C /* Colors.swift in Sources */,
 				74BA07B01AC23A7F00435E4C /* TicTacToeRulesTest.swift in Sources */,
 				74BA07B51AC23A8600435E4C /* BoardTest.swift in Sources */,
 				74BA07D11AC23AE800435E4C /* Board.swift in Sources */,
-				74BA07CF1AC23AE800435E4C /* ASCIIBoard.swift in Sources */,
+				742DBD4A1AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
