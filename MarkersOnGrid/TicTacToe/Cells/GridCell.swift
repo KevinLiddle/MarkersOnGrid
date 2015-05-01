@@ -4,6 +4,8 @@ class GridCell : UICollectionViewCell {
 
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    self.layer.borderColor = Colors.BOARD_BORDER.CGColor
+    self.layer.borderWidth = 2.0
   }
 
   var marker : UILabel!

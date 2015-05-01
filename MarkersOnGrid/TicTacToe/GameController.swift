@@ -15,10 +15,15 @@ class GameController: UICollectionViewController {
     super.init(coder: aDecoder)
   }
 
+//  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+//    return UIEdgeInsetsMake(0, 0, 0, 0)
+//  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
     collectionView!.backgroundColor = Colors.BACKGROUND
+//    collectionView!.collectionViewLayout = BoardLayout()
   }
 
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -33,12 +38,16 @@ class GameController: UICollectionViewController {
     let marker = board.getMarker(atRow: indexPath.row, column: indexPath.section)
 
     var cell = collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
-    cell.backgroundColor = Colors.BACKGROUND
+
 
     if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
       cell = collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
       cell.marker.text = marker
     }
+    cell.layer.borderColor = Colors.BOARD_BORDER.CGColor
+    cell.layer.borderWidth = 2.0
+    cell.sizeToFit()
+    collectionView.sizeToFit()
 
     return cell
   }
