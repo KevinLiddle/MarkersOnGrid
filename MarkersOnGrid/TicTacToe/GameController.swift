@@ -15,15 +15,10 @@ class GameController: UICollectionViewController {
     super.init(coder: aDecoder)
   }
 
-//  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//    return UIEdgeInsetsMake(0, 0, 0, 0)
-//  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
     collectionView!.backgroundColor = Colors.BACKGROUND
-//    collectionView!.collectionViewLayout = BoardLayout()
   }
 
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -35,21 +30,38 @@ class GameController: UICollectionViewController {
   }
 
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let marker = board.getMarker(atRow: indexPath.row, column: indexPath.section)
-
-    var cell = collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
-
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
 
     if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
-      cell = collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
-      cell.marker.text = marker
+      let marker = board.getMarker(atRow: indexPath.row, column: indexPath.section)
+      cell.fillWith(marker)
     }
-    cell.layer.borderColor = Colors.BOARD_BORDER.CGColor
-    cell.layer.borderWidth = 2.0
-    cell.sizeToFit()
+
     collectionView.sizeToFit()
 
     return cell
+  }
+
+  override func colle
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    return CGSizeMake(UIScreen.mainScreen().bounds.width / CGFloat(board.dimension), 120)
+  }
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    return CGSize()
+  }
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    return CGSize()
+  }
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+  }
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    return 0.0
   }
 
 }
