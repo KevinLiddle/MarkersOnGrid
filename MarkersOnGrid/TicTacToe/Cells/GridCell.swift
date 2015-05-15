@@ -16,7 +16,7 @@ class GridCell : UICollectionViewCell {
     marker.textAlignment = .Center
     layer.borderColor = Colors.BOARD_BORDER.CGColor
     layer.borderWidth = 2.0
-    contentView.addSubview(marker)
+    self.addSubview(marker)
 
     sizeToFit()
   }

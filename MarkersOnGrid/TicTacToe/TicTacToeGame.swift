@@ -19,7 +19,10 @@ class TicTacToeGame {
   }
 
   func makeMove(atRow row: Int, column: Int) {
-    board.set(marker: currentPlayer, atRow: row, column: column)
+    if board.isEmpty(atRow: row, column: column) {
+      board.set(marker: currentPlayer, atRow: row, column: column)
+      alternateCurrentPlayer()
+    }
   }
 
   private func alternateCurrentPlayer() {

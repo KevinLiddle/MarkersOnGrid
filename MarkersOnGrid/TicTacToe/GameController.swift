@@ -8,7 +8,6 @@ class GameController: UICollectionViewController {
 
   required init(coder aDecoder: NSCoder) {
     board = Board(dimension: 3)
-    board.set(marker: "X", atRow: 1, column: 2)
     rules = TicTacToeRules(board: board)
     game = TicTacToeGame(board: board, rules: rules)
 
@@ -61,6 +60,11 @@ class GameController: UICollectionViewController {
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
     return 0.0
+  }
+
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    game.makeMove(atRow: indexPath.row, column: indexPath.section)
+    collectionView.reloadData()
   }
 
   private func cellLength() -> CGFloat {
