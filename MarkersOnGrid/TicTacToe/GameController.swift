@@ -19,6 +19,7 @@ class GameController: UICollectionViewController {
     super.viewDidLoad()
     collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
     collectionView!.backgroundColor = Colors.BACKGROUND
+    collectionView!.contentInset = UIEdgeInsetsMake(topPadding(), leftPadding(), 0, 0)
   }
 
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -43,7 +44,7 @@ class GameController: UICollectionViewController {
   }
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    return CGSizeMake(UIScreen.mainScreen().bounds.width / CGFloat(board.dimension), 120)
+    return CGSizeMake(cellLength(), 120)
   }
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -62,4 +63,20 @@ class GameController: UICollectionViewController {
     return 0.0
   }
 
+  private func cellLength() -> CGFloat {
+    let smallestScreenDimension = [UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height].reduce(CGFloat(Int.max), combine: { min($0, $1) })
+    return smallestScreenDimension / CGFloat(board.dimension)
+  }
+
+  private func boardLength() -> CGFloat {
+    return cellLength() * CGFloat(board.dimension)
+  }
+
+  private func topPadding() -> CGFloat {
+    return (UIScreen.mainScreen().bounds.height - boardLength()) / 2
+  }
+
+  private func leftPadding() -> CGFloat {
+    return (UIScreen.mainScreen().bounds.width - boardLength()) / 2
+  }
 }
