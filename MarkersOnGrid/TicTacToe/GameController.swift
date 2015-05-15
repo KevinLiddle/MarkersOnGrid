@@ -42,8 +42,6 @@ class GameController: UICollectionViewController {
     return cell
   }
 
-  override func colle
-
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     return CGSizeMake(UIScreen.mainScreen().bounds.width / CGFloat(board.dimension), 120)
   }
