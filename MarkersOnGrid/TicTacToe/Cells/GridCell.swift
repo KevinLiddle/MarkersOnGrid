@@ -11,12 +11,13 @@ class GridCell : UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    let textFrame = CGRect(x: 0, y: 32, width: frame.size.width, height: frame.size.height/3)
-    marker = UILabel(frame: textFrame)
+    marker = UILabel(frame: frame)
     marker.textAlignment = .Center
+    marker.frame = contentView.bounds
+    marker.font = UIFont(name: "GeezaPro-Bold", size: 50.0)
     layer.borderColor = Colors.BOARD_BORDER.CGColor
     layer.borderWidth = 2.0
-    self.addSubview(marker)
+    addSubview(marker)
 
     sizeToFit()
   }

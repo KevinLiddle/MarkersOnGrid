@@ -18,11 +18,11 @@ class GameController: UICollectionViewController {
     super.viewDidLoad()
     collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
     collectionView!.backgroundColor = Colors.BACKGROUND
-    collectionView!.contentInset = UIEdgeInsetsMake(topPadding(), leftPadding(), 0, 0)
+    centerBoard(UIScreen.mainScreen().bounds.size)
   }
 
-  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
+  override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    centerBoard(size)
   }
 
   // click event callback for each cell
@@ -34,6 +34,10 @@ class GameController: UICollectionViewController {
     if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
       cell.fillWith(board.getMarker(atRow: indexPath.row, column: indexPath.section))
     }
+  }
+
+  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    return collectionView.dequeueReusableCellWithReuseIdentifier("GridCell", forIndexPath: indexPath) as! GridCell
   }
 
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -52,12 +56,12 @@ class GameController: UICollectionViewController {
     return 0.0
   }
 
-  private func topPadding() -> CGFloat {
-    return (UIScreen.mainScreen().bounds.height - smallestScreenDimension()) / 2
+  private func centerBoard(size: CGSize) {
+    collectionView!.contentInset = UIEdgeInsetsMake(sidePadding(size.height), sidePadding(size.width), 0, 0)
   }
 
-  private func leftPadding() -> CGFloat {
-    return (UIScreen.mainScreen().bounds.width - smallestScreenDimension()) / 2
+  private func sidePadding(sideDimension: CGFloat) -> CGFloat {
+    return (sideDimension - smallestScreenDimension()) / 2
   }
 
   private func cellLength() -> CGFloat {
