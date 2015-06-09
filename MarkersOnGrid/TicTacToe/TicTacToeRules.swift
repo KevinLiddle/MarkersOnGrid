@@ -43,6 +43,14 @@ class TicTacToeRules: Rules {
     return getWinner() != Board.emptyCell()
   }
 
+  func isCatsGame() -> Bool {
+    return !hasWinner() && board.isFull()
+  }
+
+  func isOver() -> Bool {
+    return hasWinner() || isCatsGame()
+  }
+
   private func groupHasWinner(group: Array<Cell>) -> Bool {
     return winnerForGroup(group) != Board.emptyCell()
   }
@@ -53,10 +61,11 @@ class TicTacToeRules: Rules {
     return group.reduce(firstOfGroup) {
       var cell: Cell = $1
 
-      if self.board.getMarker(atRow: cell.row, column: cell.column) == firstOfGroup {
-        return firstOfGroup
-      } else {
+      if self.board.isEmpty(atRow: cell.row, column: cell.column) ||
+        self.board.getMarker(atRow: cell.row, column: cell.column) != $0 {
         return Board.emptyCell()
+      } else {
+        return firstOfGroup
       }
     }
   }

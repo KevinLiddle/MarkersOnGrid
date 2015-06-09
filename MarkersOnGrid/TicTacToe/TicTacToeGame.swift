@@ -14,10 +14,6 @@ class TicTacToeGame {
     self.currentPlayer = player1
   }
 
-  func hasWinner() -> Bool {
-    return rules.hasWinner()
-  }
-
   func makeMove(atRow row: Int, column: Int) {
     if board.isEmpty(atRow: row, column: column) {
       board.set(marker: currentPlayer, atRow: row, column: column)

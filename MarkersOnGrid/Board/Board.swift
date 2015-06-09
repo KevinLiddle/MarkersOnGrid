@@ -21,6 +21,16 @@ class Board {
     return getMarker(atRow: row, column: column).isEmpty
   }
 
+  func isFull() -> Bool {
+    for row in 0..<dimension {
+      var emptyCount = cells[row].filter({ $0 == Board.emptyCell() }).count
+
+      if emptyCount > 0 { return false }
+    }
+
+    return true
+  }
+
   class func emptyCell() -> String {
     return ""
   }

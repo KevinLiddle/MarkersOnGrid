@@ -24,4 +24,23 @@ class BoardTest: XCTestCase {
     XCTAssertFalse(board.isEmpty(atRow: 0, column: 1))
   }
 
+  func test_BoardKnowsIfItIsFull() {
+    XCTAssertFalse(board.isFull())
+
+    for column in 0..<board.dimension {
+      board.set(marker: "X", atRow: 0, column: column)
+    }
+    XCTAssertFalse(board.isFull())
+
+    for column in 0..<board.dimension {
+      board.set(marker: "X", atRow: 1, column: column)
+    }
+    XCTAssertFalse(board.isFull())
+
+    for column in 0..<board.dimension {
+      board.set(marker: "X", atRow: 2, column: column)
+    }
+    XCTAssertTrue(board.isFull())
+  }
+
 }

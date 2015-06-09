@@ -18,6 +18,7 @@ class TicTacToeRulesTest: XCTestCase {
 
   func test_ThereIsAWinnerIfAWholeRowHasTheSameMarker() {
     for column in 0..<3 {
+      XCTAssertFalse(tttRules.hasWinner())
       board.set(marker: "X", atRow: 1, column: column)
     }
     XCTAssertTrue(tttRules.hasWinner())
@@ -25,6 +26,7 @@ class TicTacToeRulesTest: XCTestCase {
 
   func test_ThereIsAWinnerIfAWholeColumnHasTheSameMarker() {
     for row in 0..<3 {
+      XCTAssertFalse(tttRules.hasWinner())
       board.set(marker: "X", atRow: row, column: 2)
     }
     XCTAssertTrue(tttRules.hasWinner())
@@ -32,6 +34,7 @@ class TicTacToeRulesTest: XCTestCase {
 
   func test_ThereIsAWinnerIfTheBackDiagonalIsAllTheSameMarker() {
     for cell in 0..<3 {
+      XCTAssertFalse(tttRules.hasWinner())
       board.set(marker: "X", atRow: cell, column: cell)
     }
     XCTAssertTrue(tttRules.hasWinner())
@@ -39,9 +42,17 @@ class TicTacToeRulesTest: XCTestCase {
 
   func test_ThereIsAWinnerIfTheForwardDiagonalIsAllTheSameMarker() {
     for cell in 0..<3 {
+      XCTAssertFalse(tttRules.hasWinner())
       board.set(marker: "X", atRow: cell, column: 2 - cell)
     }
     XCTAssertTrue(tttRules.hasWinner())
+  }
+
+  func test_ThereIsNoWinnerIfARowHasMixedMarkers() {
+    board.set(marker: "X", atRow: 0, column: 0)
+    board.set(marker: "O", atRow: 0, column: 1)
+    board.set(marker: "X", atRow: 0, column: 2)
+    XCTAssertFalse(tttRules.hasWinner())
   }
 
   func test_GetWinnerReturnsEmptyCellIfNoWinner() {

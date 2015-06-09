@@ -14,8 +14,9 @@ class GridCell : UICollectionViewCell {
     marker = UILabel(frame: frame)
     marker.textAlignment = .Center
     marker.frame = contentView.bounds
-    marker.font = UIFont(name: "GeezaPro-Bold", size: 50.0)
-    layer.borderColor = Colors.BOARD_BORDER.CGColor
+    marker.font = UIFont(name: "Futura-Medium", size: 80.0)
+    marker.textColor = Colors.PRIMARY_TEXT
+    layer.borderColor = Colors.PRIMARY_CONTRAST.CGColor
     layer.borderWidth = 2.0
     addSubview(marker)
 

@@ -3,7 +3,7 @@ import UIKit
 class GameController: UICollectionViewController {
 
   var board: Board
-  var rules: Rules
+  var rules: TicTacToeRules
   var game: TicTacToeGame
 
   required init(coder aDecoder: NSCoder) {
@@ -27,6 +27,10 @@ class GameController: UICollectionViewController {
 
   // click event callback for each cell
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    if rules.isOver() {
+      return
+    }
+    
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GridCell
 
     game.makeMove(atRow: indexPath.row, column: indexPath.section)
@@ -34,6 +38,20 @@ class GameController: UICollectionViewController {
     if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
       cell.fillWith(board.getMarker(atRow: indexPath.row, column: indexPath.section))
     }
+
+    if rules.hasWinner() {
+      renderPlayAgainButton()
+    } else if rules.isCatsGame() {
+      // do other stuff
+    }
+  }
+
+  override func shouldAutorotate() -> Bool {
+    return false
+  }
+
+  override func supportedInterfaceOrientations() -> Int {
+    return UIInterfaceOrientation.Portrait.rawValue
   }
 
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -54,6 +72,32 @@ class GameController: UICollectionViewController {
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
     return 0.0
+  }
+
+  private func renderPlayAgainButton() {
+    var playAgain = NSBundle.mainBundle().loadNibNamed("PlayAgain", owner: self, options: nil)[0] as! PlayAgain
+    playAgain.setTranslatesAutoresizingMaskIntoConstraints(false)
+    self.view.addSubview(playAgain)
+//    self.view.addConstraints([
+//      NSLayoutConstraint(
+//        item: playAgain,
+//        attribute: NSLayoutAttribute.CenterX,
+//        relatedBy: NSLayoutRelation.Equal,
+//        toItem: UIScreen.mainScreen(),
+//        attribute: NSLayoutAttribute.CenterX,
+//        multiplier: 1.0,
+//        constant: 0.0
+//      ),
+//      NSLayoutConstraint(
+//        item: playAgain,
+//        attribute: NSLayoutAttribute.Bottom,
+//        relatedBy: NSLayoutRelation.LessThanOrEqual,
+//        toItem: collectionView,
+//        attribute: NSLayoutAttribute.Bottom,
+//        multiplier: 1.0,
+//        constant: -playAgain.bounds.height
+//      )
+//    ])
   }
 
   private func centerBoard(size: CGSize) {
