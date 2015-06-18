@@ -2,6 +2,9 @@ import UIKit
 
 class GameController: UICollectionViewController {
 
+  let FOOTER_TAG = 999
+  let HEADER_TAG = 111
+
   var board: Board
   var rules: TicTacToeRules
   var game: TicTacToeGame
@@ -18,29 +21,17 @@ class GameController: UICollectionViewController {
     super.viewDidLoad()
     collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
     collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer")
-    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Header")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
     collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Empty")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Empty")
     collectionView!.backgroundColor = Colors.BACKGROUND
     collectionView!.setTranslatesAutoresizingMaskIntoConstraints(true)
-    collectionView!.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
   }
 
   // click event callback for each cell
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    if rules.isOver() {
-      return
-    }
-    
-    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GridCell
-
-    game.makeMove(atRow: indexPath.row, column: indexPath.section)
-
-    if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
-      cell.fillWith(board.getMarker(atRow: indexPath.row, column: indexPath.section))
-    }
-
-    if rules.hasWinner() {
-      collectionView.reloadSections(NSIndexSet(index: board.dimension - 1))
+    if !rules.isOver() {
+      handleMove(collectionView, atIndexPath: indexPath)
     }
   }
 
@@ -65,10 +56,15 @@ class GameController: UICollectionViewController {
   }
 
   override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    if indexPath.section == board.dimension - 1 && rules.isOver() {
-      return renderPlayAgainButton(collectionView, indexPath: indexPath)
+    println(indexPath.section)
+    println(kind)
+    if indexPath.section == 0 && kind == UICollectionElementKindSectionHeader {
+      return renderHeader(collectionView, indexPath: indexPath)
+    } else if indexPath.section == board.dimension - 1 && kind == UICollectionElementKindSectionFooter {
+      return renderFooter(collectionView, indexPath: indexPath)
     }
-    return collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "Empty", forIndexPath: indexPath) as! UICollectionReusableView
+
+    return renderEmptySection(collectionView, indexPath: indexPath, kind: kind)
   }
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -80,35 +76,85 @@ class GameController: UICollectionViewController {
   }
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-    if section < board.dimension - 1 {
-      return CGSize.zeroSize
-    } else {
-      return CGSize(width: UIScreen.mainScreen().bounds.width, height: 100)
+    if section == board.dimension - 1 {
+      return supplementarySectionSize()
+    }
+    return CGSize.zeroSize
+  }
+
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    if section == 0 {
+      return supplementarySectionSize()
+    }
+    return CGSize.zeroSize
+  }
+
+  private func handleMove(collectionView: UICollectionView, atIndexPath indexPath: NSIndexPath) {
+    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GridCell
+
+    game.makeMove(atRow: indexPath.row, column: indexPath.section)
+
+    if !board.isEmpty(atRow: indexPath.row, column: indexPath.section) {
+      cell.fillWith(board.getMarker(atRow: indexPath.row, column: indexPath.section))
+    }
+
+    if rules.isOver() {
+      renderPlayAgain(collectionView)
     }
   }
 
-  private func renderPlayAgainButton(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionReusableView {
+  private func renderHeader(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionReusableView {
+    let header = collectionView.dequeueReusableSupplementaryViewOfKind(
+      UICollectionElementKindSectionHeader,
+      withReuseIdentifier: "Header",
+      forIndexPath: indexPath
+      ) as! UICollectionReusableView
+
+    header.tag = HEADER_TAG
+
+    return header
+  }
+
+  private func renderFooter(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionReusableView {
     let footer = collectionView.dequeueReusableSupplementaryViewOfKind(
       UICollectionElementKindSectionFooter,
       withReuseIdentifier: "Footer",
       forIndexPath: indexPath
     ) as! UICollectionReusableView
 
-    let playAgain = PlayAgain(frame: collectionView.frame)
-
-    footer.addSubview(playAgain)
-
-    playAgain.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin
+    footer.tag = FOOTER_TAG
 
     return footer
   }
 
-  private func cellLength() -> CGFloat {
-    return smallestScreenDimension() / CGFloat(board.dimension)
+  private func renderEmptySection(collectionView: UICollectionView, indexPath: NSIndexPath, kind: String) -> UICollectionReusableView {
+    return collectionView.dequeueReusableSupplementaryViewOfKind(
+      kind,
+      withReuseIdentifier: "Empty",
+      forIndexPath: indexPath
+      ) as! UICollectionReusableView
   }
 
-  private func smallestScreenDimension() -> CGFloat {
-    return [UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height].reduce(CGFloat(Int.max), combine: { min($0, $1) })
+  private func renderPlayAgain(collectionView: UICollectionView) {
+    let footer = collectionView.viewWithTag(FOOTER_TAG) as! UICollectionReusableView
+    let playAgain = PlayAgain(frame: collectionView.frame)
+
+    footer.addSubview(playAgain)
+    playAgain.center.x = footer.center.x
+  }
+
+  private func supplementarySectionSize() -> CGSize {
+    let height = (UIScreen.mainScreen().bounds.height - screenWidth()) / 3.0
+
+    return CGSize(width: screenWidth(), height: height)
+  }
+
+  private func cellLength() -> CGFloat {
+    return screenWidth() / CGFloat(board.dimension)
+  }
+
+  private func screenWidth() -> CGFloat {
+    return UIScreen.mainScreen().bounds.width
   }
 
 }
