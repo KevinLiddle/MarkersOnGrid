@@ -56,8 +56,6 @@ class GameController: UICollectionViewController {
   }
 
   override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    println(indexPath.section)
-    println(kind)
     if indexPath.section == 0 && kind == UICollectionElementKindSectionHeader {
       return renderHeader(collectionView, indexPath: indexPath)
     } else if indexPath.section == board.dimension - 1 && kind == UICollectionElementKindSectionFooter {
@@ -99,6 +97,7 @@ class GameController: UICollectionViewController {
     }
 
     if rules.isOver() {
+      renderWinner(collectionView)
       renderPlayAgain(collectionView)
     }
   }
@@ -137,10 +136,22 @@ class GameController: UICollectionViewController {
 
   private func renderPlayAgain(collectionView: UICollectionView) {
     let footer = collectionView.viewWithTag(FOOTER_TAG) as! UICollectionReusableView
-    let playAgain = PlayAgain(frame: collectionView.frame)
+    let playAgain = PlayAgain(frame: footer.frame)
 
     footer.addSubview(playAgain)
-    playAgain.center.x = footer.center.x
+    center(playAgain, inParentView: footer)
+  }
+
+  private func renderWinner(collectionView: UICollectionView) {
+    let header = collectionView.viewWithTag(HEADER_TAG) as! UICollectionReusableView
+    let winner = Winner(frame: header.frame, winner: rules.getWinner())
+
+    header.addSubview(winner)
+    center(winner, inParentView: header)
+  }
+
+  private func center(childView: UIView, inParentView parent: UIView) {
+    childView.center = CGPoint(x: parent.bounds.width / 2, y: parent.bounds.height / 2)
   }
 
   private func supplementarySectionSize() -> CGSize {
@@ -155,6 +166,10 @@ class GameController: UICollectionViewController {
 
   private func screenWidth() -> CGFloat {
     return UIScreen.mainScreen().bounds.width
+  }
+
+  private func screenHeight() -> CGFloat {
+    return UIScreen.mainScreen().bounds.height
   }
 
 }

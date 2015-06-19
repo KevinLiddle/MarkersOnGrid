@@ -16,8 +16,8 @@
 		742DBD4A1AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */; };
 		742DBD4C1AC5F6D8005EB047 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD4B1AC5F6D8005EB047 /* Rules.swift */; };
 		742DBD4D1AC5F6D8005EB047 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DBD4B1AC5F6D8005EB047 /* Rules.swift */; };
+		74412C611B33946E00C754DF /* Winner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74412C601B33946E00C754DF /* Winner.swift */; };
 		745ED0111B18F14100BDD003 /* PlayAgain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745ED0101B18F14100BDD003 /* PlayAgain.swift */; };
-		7468FDFD1B169167002964DD /* PlayAgain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7468FDFC1B169167002964DD /* PlayAgain.xib */; };
 		749667331ABCBA2D00E69E03 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749667321ABCBA2D00E69E03 /* HomeController.swift */; };
 		74BA07B01AC23A7F00435E4C /* TicTacToeRulesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07AF1AC23A7F00435E4C /* TicTacToeRulesTest.swift */; };
 		74BA07B51AC23A8600435E4C /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA07B31AC23A8600435E4C /* BoardTest.swift */; };
@@ -53,8 +53,8 @@
 		7408C3491A325A4E00C008FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeGame.swift; sourceTree = "<group>"; };
 		742DBD4B1AC5F6D8005EB047 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		74412C601B33946E00C754DF /* Winner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Winner.swift; sourceTree = "<group>"; };
 		745ED0101B18F14100BDD003 /* PlayAgain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayAgain.swift; sourceTree = "<group>"; };
-		7468FDFC1B169167002964DD /* PlayAgain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayAgain.xib; sourceTree = "<group>"; };
 		749667321ABCBA2D00E69E03 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		74BA07AF1AC23A7F00435E4C /* TicTacToeRulesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeRulesTest.swift; sourceTree = "<group>"; };
 		74BA07B31AC23A8600435E4C /* BoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 				74FE249E1AD76B3700C6C0D9 /* GameController.swift */,
 				74BA07C81AC23AE200435E4C /* TicTacToeRules.swift */,
 				742DBD481AC5F5E4005EB047 /* TicTacToeGame.swift */,
-				7468FDFC1B169167002964DD /* PlayAgain.xib */,
 				745ED0101B18F14100BDD003 /* PlayAgain.swift */,
+				74412C601B33946E00C754DF /* Winner.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -278,7 +278,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7468FDFD1B169167002964DD /* PlayAgain.xib in Resources */,
 				7408C33A1A325A4E00C008FF /* Main.storyboard in Resources */,
 				7408C33F1A325A4E00C008FF /* LaunchScreen.xib in Resources */,
 				7408C33C1A325A4E00C008FF /* Images.xcassets in Resources */,
@@ -309,6 +308,7 @@
 				7408C3321A325A4E00C008FF /* AppDelegate.swift in Sources */,
 				74BA07D01AC23AE800435E4C /* Board.swift in Sources */,
 				742DBD491AC5F5E4005EB047 /* TicTacToeGame.swift in Sources */,
+				74412C611B33946E00C754DF /* Winner.swift in Sources */,
 				74FE24A81AD795AC00C6C0D9 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
