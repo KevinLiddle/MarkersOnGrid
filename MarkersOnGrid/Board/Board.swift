@@ -31,6 +31,10 @@ class Board {
     return true
   }
 
+  func reset() {
+    self.cells = Board.buildCells(dimension)
+  }
+
   class func emptyCell() -> String {
     return ""
   }

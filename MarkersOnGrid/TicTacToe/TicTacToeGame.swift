@@ -21,6 +21,11 @@ class TicTacToeGame {
     }
   }
 
+  func reset() {
+    board.reset()
+    currentPlayer = player1
+  }
+
   private func alternateCurrentPlayer() {
     if currentPlayer == player1 {
       currentPlayer = player2

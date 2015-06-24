@@ -8,24 +8,23 @@ class GameController: UICollectionViewController {
   var board: Board
   var rules: TicTacToeRules
   var game: TicTacToeGame
+  var coder: NSCoder
 
   required init(coder aDecoder: NSCoder) {
     board = Board(dimension: 3)
     rules = TicTacToeRules(board: board)
     game = TicTacToeGame(board: board, rules: rules)
+    coder = aDecoder
 
     super.init(coder: aDecoder)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
-    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer")
-    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
-    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Empty")
-    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Empty")
+
+    registerSubviewClasses()
+
     collectionView!.backgroundColor = Colors.BACKGROUND
-    collectionView!.setTranslatesAutoresizingMaskIntoConstraints(true)
   }
 
   // click event callback for each cell
@@ -87,6 +86,13 @@ class GameController: UICollectionViewController {
     return CGSize.zeroSize
   }
 
+  func resetGame() {
+    game.reset()
+    let originalCollectionView = collectionView!
+    self.collectionView = UICollectionView(frame: originalCollectionView.frame, collectionViewLayout: originalCollectionView.collectionViewLayout)
+    viewDidLoad()
+  }
+
   private func handleMove(collectionView: UICollectionView, atIndexPath indexPath: NSIndexPath) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GridCell
 
@@ -100,6 +106,24 @@ class GameController: UICollectionViewController {
       renderWinner(collectionView)
       renderPlayAgain(collectionView)
     }
+  }
+
+  private func renderWinner(collectionView: UICollectionView) {
+    let header = collectionView.viewWithTag(HEADER_TAG) as! UICollectionReusableView
+    let winner = Winner(frame: header.frame, winner: rules.getWinner())
+
+    header.addSubview(winner)
+    center(winner, inParentView: header)
+  }
+
+  private func renderPlayAgain(collectionView: UICollectionView) {
+    let footer = collectionView.viewWithTag(FOOTER_TAG) as! UICollectionReusableView
+    let playAgain = PlayAgain(frame: footer.frame)
+
+    playAgain.addTarget(self, action: "resetGame", forControlEvents: UIControlEvents.TouchUpInside)
+
+    footer.addSubview(playAgain)
+    center(playAgain, inParentView: footer)
   }
 
   private func renderHeader(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -134,22 +158,6 @@ class GameController: UICollectionViewController {
       ) as! UICollectionReusableView
   }
 
-  private func renderPlayAgain(collectionView: UICollectionView) {
-    let footer = collectionView.viewWithTag(FOOTER_TAG) as! UICollectionReusableView
-    let playAgain = PlayAgain(frame: footer.frame)
-
-    footer.addSubview(playAgain)
-    center(playAgain, inParentView: footer)
-  }
-
-  private func renderWinner(collectionView: UICollectionView) {
-    let header = collectionView.viewWithTag(HEADER_TAG) as! UICollectionReusableView
-    let winner = Winner(frame: header.frame, winner: rules.getWinner())
-
-    header.addSubview(winner)
-    center(winner, inParentView: header)
-  }
-
   private func center(childView: UIView, inParentView parent: UIView) {
     childView.center = CGPoint(x: parent.bounds.width / 2, y: parent.bounds.height / 2)
   }
@@ -170,6 +178,14 @@ class GameController: UICollectionViewController {
 
   private func screenHeight() -> CGFloat {
     return UIScreen.mainScreen().bounds.height
+  }
+
+  private func registerSubviewClasses() {
+    collectionView!.registerClass(GridCell.self, forCellWithReuseIdentifier: "GridCell")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Empty")
+    collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Empty")
   }
 
 }

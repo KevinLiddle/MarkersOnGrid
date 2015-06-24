@@ -107,6 +107,7 @@
 				74BA07CB1AC23AE800435E4C /* Board */,
 				74BA07C71AC23AE200435E4C /* TicTacToe */,
 				74BA07C01AC23ADB00435E4C /* Util */,
+				742DBD4B1AC5F6D8005EB047 /* Rules.swift */,
 				7408C3381A325A4E00C008FF /* Main.storyboard */,
 				749667321ABCBA2D00E69E03 /* HomeController.swift */,
 				7408C3311A325A4E00C008FF /* AppDelegate.swift */,
@@ -114,7 +115,6 @@
 				7408C33D1A325A4E00C008FF /* LaunchScreen.xib */,
 				7408C3331A325A4E00C008FF /* MarkersOnGrid.xcdatamodeld */,
 				7408C32F1A325A4E00C008FF /* Supporting Files */,
-				742DBD4B1AC5F6D8005EB047 /* Rules.swift */,
 			);
 			path = MarkersOnGrid;
 			sourceTree = "<group>";

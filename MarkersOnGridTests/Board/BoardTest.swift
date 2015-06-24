@@ -43,4 +43,14 @@ class BoardTest: XCTestCase {
     XCTAssertTrue(board.isFull())
   }
 
+  func test_BoardResets() {
+    board.set(marker: "X", atRow: 0, column: 1)
+
+    XCTAssertFalse(board.isEmpty(atRow: 0, column: 1))
+
+    board.reset()
+
+    XCTAssertTrue(board.isEmpty(atRow: 0, column: 1))
+  }
+
 }
